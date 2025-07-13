@@ -36,33 +36,58 @@
         </div>
     </header>
 
-    <!-- Hero Section -->
-    <section class="hero">
-        <div class="hero-content">
-            <div class="hero-text">
-                <h1>Stunning Narrowboat for Sale</h1>
-                <p class="hero-subtitle">Fully renovated luxury narrowboat with Perkins 4108 engine and smart systems</p>
-                <div class="hero-features">
-                    <span class="feature-tag">🌞 1030W Solar Power</span>
-                    <span class="feature-tag">🏠 Fully Renovated</span>
-                    <span class="feature-tag">🔧 Smart Monitoring</span>
-                    <span class="feature-tag">⚡ 5G Connected</span>
+    <!-- Hero Carousel Section -->
+    <section class="hero-carousel-section">
+        <div class="hero-carousel-container">
+            <div class="hero-slide active" style="background-image: url('Gallery/inside_landscape1.jpg')">
+                <div class="hero-overlay">
+                    <div class="container">
+                        <div class="hero-content">
+                            <h1>Stunning Narrowboat for Sale</h1>
+                            <p>Fully renovated luxury narrowboat with modern amenities and smart systems</p>
+                        </div>
+                    </div>
                 </div>
-                <a href="#contact" class="cta-button">Contact Us Today</a>
             </div>
-            <div class="hero-image">
-                <img src="Gallery/outside_landscape1.jpg" alt="Beautiful narrowboat exterior" id="hero-img">
+            <div class="hero-slide" style="background-image: url('Gallery/inside_landscape2.jpg')"></div>
+            <div class="hero-slide" style="background-image: url('Gallery/inside_landscape3.jpg')"></div>
+            <div class="hero-slide" style="background-image: url('Gallery/inside_landscape4.jpg')"></div>
+            <div class="hero-slide" style="background-image: url('Gallery/outside_landscape1.jpg')"></div>
+            <div class="hero-slide" style="background-image: url('Gallery/outside_landscape3.jpg')"></div>
+            <div class="hero-slide" style="background-image: url('Gallery/inside_landscape8.jpg')"></div>
+            <div class="hero-slide" style="background-image: url('Gallery/outside_landscape6.jpg')"></div>
+            
+            <button class="hero-nav-btn prev" onclick="changeHeroSlide(-1)">❮</button>
+            <button class="hero-nav-btn next" onclick="changeHeroSlide(1)">❯</button>
+            
+            <div class="hero-indicators">
+                <span class="hero-indicator active" onclick="currentHeroSlide(1)"></span>
+                <span class="hero-indicator" onclick="currentHeroSlide(2)"></span>
+                <span class="hero-indicator" onclick="currentHeroSlide(3)"></span>
+                <span class="hero-indicator" onclick="currentHeroSlide(4)"></span>
+                <span class="hero-indicator" onclick="currentHeroSlide(5)"></span>
+                <span class="hero-indicator" onclick="currentHeroSlide(6)"></span>
+                <span class="hero-indicator" onclick="currentHeroSlide(7)"></span>
+                <span class="hero-indicator" onclick="currentHeroSlide(8)"></span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Video Section -->
+    <section class="video-section page-section">
+        <div class="container">
+            <div class="video-container">
+                <iframe width="100%" height="500" src="https://www.youtube.com/embed/acXKokLhvRo" frameborder="0" allowfullscreen></iframe>
             </div>
         </div>
     </section>
 
     <!-- Main Gallery Section -->
-    <section class="gallery-section">
+    <section class="gallery-section page-section">
         <div class="container">
             <h2>Boat Gallery</h2>
             <p class="section-subtitle">A glimpse of life on the water. <a href="gallery.html" class="link-arrow">View the full gallery &rarr;</a></p>
             <div id="main-gallery" class="gallery-grid">
-                <!-- A smaller, curated selection of images -->
                 <div class="gallery-item" data-src="Gallery/outside_landscape1.jpg" data-lg-size="4608-3456">
                     <img src="Gallery/outside_landscape1.jpg" alt="Exterior view - canal side">
                     <div class="gallery-overlay"><i class="fas fa-expand"></i></div>
@@ -92,60 +117,115 @@
     </section>
 
     <!-- Technical Specifications -->
-    <section class="tech-specs">
+    <section class="tech-specs page-section">
         <div class="container">
-            <div class="specs-content">
-                <div class="specs-text">
-                    <h2>Modern & Reliable</h2>
-                    <p class="section-subtitle" style="text-align: left; color: #eee; margin-bottom: 30px;">Built with the best systems for comfort and peace of mind.</p>
-                    <div class="spec-grid-home">
-                        <div class="spec-item-home"><i class="fas fa-solar-panel"></i> 1030W Solar Power</div>
-                        <div class="spec-item-home"><i class="fas fa-fire"></i> Perkins 4108 Engine</div>
-                        <div class="spec-item-home"><i class="fas fa-wifi"></i> 5G Connected</div>
-                        <div class="spec-item-home"><i class="fas fa-tint"></i> 3-Stage Water Purifier</div>
-                    </div>
-                    <a href="specifications.html" class="cta-button" style="margin-top: 30px;">View Full Specifications</a>
+            <div class="feature-row">
+                <div class="feature-text">
+                    <h2>Modern & Reliable Systems</h2>
+                    <p>Built with the best systems for comfort and peace of mind. Every component has been carefully selected for quality and reliability.</p>
+                    <ul>
+                        <li><strong>Solar Power:</strong> 1080W total solar capacity</li>
+                        <li><strong>Engine:</strong> Legendary Perkins 4108 workhorse</li>
+                        <li><strong>Connectivity:</strong> 5G router for excellent internet</li>
+                        <li><strong>Water:</strong> 3-stage purification system</li>
+                        <li><strong>Heating:</strong> Multi-fuel stove and electric diesel heater</li>
+                        <li><strong>Monitoring:</strong> Advanced Victron system monitoring</li>
+                    </ul>
+                    <a href="specifications.html" class="link-arrow">View full specifications &rarr;</a>
                 </div>
-                <div class="specs-image">
-                    <img src="Gallery/inside_landscape2.jpg" alt="Interior showing technical systems">
+                <div class="feature-image">
+                    <img src="Gallery/outside_portrait2.jpg" alt="Boat exterior with solar panels">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Smart Systems Section -->
+    <section class="smart-systems page-section">
+        <div class="container">
+            <div class="feature-row reverse">
+                <div class="feature-text">
+                    <h2>Smart Home Technology</h2>
+                    <p>Experience the future of narrowboat living with our integrated smart systems and real-time monitoring.</p>
+                    <ul>
+                        <li><strong>Live Display:</strong> Real-time system monitoring dashboard</li>
+                        <li><strong>Remote Access:</strong> Monitor your boat from anywhere</li>
+                        <li><strong>Smart Lighting:</strong> Dimmable LED controls throughout</li>
+                        <li><strong>Environmental Data:</strong> Temperature, humidity, and weather</li>
+                        <li><strong>Battery Management:</strong> Precise power monitoring</li>
+                        <li><strong>Water Levels:</strong> Never run out unexpectedly</li>
+                    </ul>
+                    <a href="smart-systems.html" class="link-arrow">Explore smart features &rarr;</a>
+                </div>
+                <div class="feature-image">
+                    <img src="Gallery/livegrid_portrait.png" alt="Smart system display showing live data">
                 </div>
             </div>
         </div>
     </section>
     
     <!-- Renovation Journey -->
-    <section class="renovation-section">
+    <section class="renovation-section page-section">
         <div class="container">
-            <div class="renovation-layout">
-                <div class="renovation-text">
-                    <h2>A Step-by-Step Look at the Transformation</h2>
-                    <p class="section-subtitle" style="text-align: left; margin-bottom: 20px;">From an empty shell to a floating home, see how it happened.</p>
-                    <p>The entire process was a labor of love, focused on quality craftsmanship and smart design. Every detail, from the insulation to the custom cabinetry, was meticulously planned and executed to create a comfortable and modern living space.</p>
+            <div class="feature-row">
+                <div class="feature-text">
+                    <h2>Transformation Journey</h2>
+                    <p>From an empty shell to a floating home, see how this boat was transformed through careful planning and quality craftsmanship.</p>
+                    <p>Every detail was meticulously planned and executed to create a comfortable and modern living space. The renovation focused on maximizing space efficiency while maintaining the classic narrowboat charm.</p>
                     <a href="gallery.html" class="link-arrow">See more construction photos &rarr;</a>
                 </div>
-                <div class="renovation-carousel-wrapper">
-                    <div id="inline-gallery-container" class="inline-gallery-container"></div>
+                <div class="feature-image">
+                    <div id="renovation-gallery-container" class="inline-gallery-container"></div>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Window View Carousel Section -->
-    <section class="window-view-section">
+    <section class="window-view-section page-section">
         <div class="container">
-            <h2>Never The Same View</h2>
-            <p class="section-subtitle">The scenery is always changing. See the beautiful and varied views from the boat's window.</p>
+            <h2>Ever-Changing Views</h2>
+            <p class="section-subtitle">The scenery is always changing. We recently cruised from London to Birmingham and back - it was an absolutely amazing experience. The journey took us through beautiful countryside, historic locks, and charming canal-side villages. Every day brought new vistas and peaceful moments watching the world go by from our floating home.</p>
             <div id="window-gallery-container" class="inline-gallery-container"></div>
         </div>
     </section>
     
-    <!-- Footer -->
-    <footer>
+    <!-- Pricing Section -->
+    <section class="pricing-contact page-section">
         <div class="container">
-            <p>&copy; 2024 Narrowboat Sale. All rights reserved.</p>
+            <h2 class="page-title">Ready to Make This Your Home?</h2>
+            <div class="pricing-single-layout">
+                <div class="pricing-card-redesigned">
+                    <div class="pricing-header">
+                        <h2>Asking Price</h2>
+                        <div class="price">£75,000</div>
+                        <p class="price-note">Price negotiable for serious buyers</p>
+                    </div>
+                    
+                    <div class="pricing-features">
+                        <h3>What's Included</h3>
+                        <ul class="included-list">
+                            <li>✓ Renovated to a high standard</li>
+                            <li>✓ Perkins 4108 engine (serviced Dec 2023)</li>
+                            <li>✓ Hull blackened professionally (Dec 2023)</li>
+                            <li>✓ Complete solar & electrical systems</li>
+                            <li>✓ All smart monitoring included</li>
+                            <li>✓ 5G connection installed</li>
+                            <li>✓ Survey from 2021 (excellent report)</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="contact-section">
+                        <button class="contact-button" onclick="window.location.href='contact.html'">
+                            <i class="fas fa-phone"></i>
+                            Contact Now
+                        </button>
+                    </div>
+                </div>
+            </div>
         </div>
-    </footer>
-
+    </section>
+    
     <!-- lightGallery JavaScript -->
     <script src="https://cdn.jsdelivr.net/npm/lightgallery@2.8.3/lightgallery.umd.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/lightgallery@2.8.3/plugins/thumbnail/lg-thumbnail.umd.min.js"></script>

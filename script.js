@@ -116,11 +116,79 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    // Initialize Inline Renovation Carousel
-    const lgContainer = document.getElementById('inline-gallery-container');
-    if (lgContainer) {
-        const inlineGallery = lightGallery(lgContainer, {
-            container: lgContainer,
+    // Initialize Hero Carousel
+    let heroSlideIndex = 1;
+    let heroTimer = null;
+    
+    function showHeroSlide(n) {
+        let slides = document.querySelectorAll('.hero-slide');
+        let indicators = document.querySelectorAll('.hero-indicator');
+        
+        if (n > slides.length) { heroSlideIndex = 1 }
+        if (n < 1) { heroSlideIndex = slides.length }
+        
+        slides.forEach(slide => slide.classList.remove('active'));
+        indicators.forEach(indicator => indicator.classList.remove('active'));
+        
+        if (slides[heroSlideIndex - 1]) {
+            slides[heroSlideIndex - 1].classList.add('active');
+        }
+        
+        if (indicators[heroSlideIndex - 1]) {
+            indicators[heroSlideIndex - 1].classList.add('active');
+        }
+    }
+    
+    function resetHeroTimer() {
+        if (heroTimer) {
+            clearInterval(heroTimer);
+        }
+        heroTimer = setInterval(() => {
+            if (document.querySelector('.hero-carousel-section')) {
+                changeHeroSlide(1);
+            }
+        }, 5000);
+    }
+    
+    window.changeHeroSlide = function(n) {
+        showHeroSlide(heroSlideIndex += n);
+        resetHeroTimer(); // Reset timer when manually navigating
+    }
+    
+    window.currentHeroSlide = function(n) {
+        showHeroSlide(heroSlideIndex = n);
+        resetHeroTimer(); // Reset timer when manually navigating
+    }
+    
+    // Initialize auto-advance hero carousel
+    resetHeroTimer();
+    
+    // Touch support for hero carousel
+    const heroCarousel = document.querySelector('.hero-carousel-section');
+    if (heroCarousel) {
+        let touchStartX = 0;
+        let touchEndX = 0;
+        
+        heroCarousel.addEventListener('touchstart', function(e) {
+            touchStartX = e.changedTouches[0].screenX;
+        });
+        
+        heroCarousel.addEventListener('touchend', function(e) {
+            touchEndX = e.changedTouches[0].screenX;
+            if (touchEndX < touchStartX - 50) {
+                changeHeroSlide(1); // Swipe left - next slide
+            }
+            if (touchEndX > touchStartX + 50) {
+                changeHeroSlide(-1); // Swipe right - previous slide
+            }
+        });
+    }
+
+    // Initialize Renovation Gallery
+    const renovationContainer = document.getElementById('renovation-gallery-container');
+    if (renovationContainer) {
+        const renovationGallery = lightGallery(renovationContainer, {
+            container: renovationContainer,
             dynamic: true,
             hash: false,
             closable: false,
@@ -128,17 +196,28 @@ document.addEventListener('DOMContentLoaded', function() {
             appendSubHtmlTo: '.lg-item',
             slideDelay: 400,
             dynamicEl: [
-                { src: 'Gallery/progression1.PNG', thumb: 'Gallery/progression1.PNG', subHtml: '<h4>Stage 1: The Empty Shell</h4><p>The boat as it was when the project began - a completely blank canvas.</p>' },
-                { src: 'Gallery/progression2.jpg', thumb: 'Gallery/progression2.jpg', subHtml: '<h4>Stage 2: Framing and Insulation</h4><p>The internal structure starts to take shape with wooden framing and spray foam insulation.</p>' },
-                { src: 'Gallery/progression3.jpg', thumb: 'Gallery/progression3.jpg', subHtml: '<h4>Stage 3: Wiring and Cladding</h4><p>Electrical wiring is run throughout, and the beautiful wood cladding is installed.</p>' },
-                { src: 'Gallery/progression4.jpg', thumb: 'Gallery/progression4.jpg', subHtml: '<h4>Stage 4: Kitchen and Cabinetry</h4><p>Custom cabinetry and the kitchen units are built and fitted.</p>' },
-                { src: 'Gallery/progression5.jpg', thumb: 'Gallery/progression5.jpg', subHtml: '<h4>Stage 5: Final Touches</h4><p>The interior is painted, and final details like lighting and flooring are added.</p>' },
-                { src: 'Gallery/after1.jpg',     thumb: 'Gallery/after1.jpg',     subHtml: '<h4>The Finished Product</h4><p>The beautiful, modern, and cozy interior is complete and ready to be enjoyed.</p>' }
+                // { src: 'Gallery/construction1.jpg', thumb: 'Gallery/construction1.jpg', subHtml: '<h4>Construction: Framework</h4><p>The internal structure starts to take shape with wooden framing.</p>' },
+                // { src: 'Gallery/construction2.jpg', thumb: 'Gallery/construction2.jpg', subHtml: '<h4>Construction: Insulation</h4><p>Spray foam insulation provides excellent thermal properties.</p>' },
+                // { src: 'Gallery/construction3.jpg', thumb: 'Gallery/construction3.jpg', subHtml: '<h4>Construction: Wiring</h4><p>Electrical wiring is run throughout the boat.</p>' },
+                // { src: 'Gallery/construction4.jpg', thumb: 'Gallery/construction4.jpg', subHtml: '<h4>Construction: Cladding</h4><p>Beautiful wood cladding is installed.</p>' },
+                // { src: 'Gallery/construction5.jpg', thumb: 'Gallery/construction5.jpg', subHtml: '<h4>Construction: Kitchen</h4><p>Custom cabinetry and kitchen units are built and fitted.</p>' },
+                { src: 'Gallery/progression1.PNG', thumb: 'Gallery/progression1.PNG', subHtml: '<h4>How it started</h4><p>Looked ok but there was no insulation.</p>' },
+                { src: 'Gallery/progression2.jpg', thumb: 'Gallery/progression2.jpg', subHtml: '<h4>Demolition</h4><p>Removing old walls, floor, everything basically.</p>' },
+                { src: 'Gallery/progression3.jpg', thumb: 'Gallery/progression3.jpg', subHtml: '<h4>Sanding and Cleaning</h4><p>So much rust was sanded off.</p>' },
+                { src: 'Gallery/progression4.jpg', thumb: 'Gallery/progression4.jpg', subHtml: '<h4>Spray Foam</h4><p>Professional spray foam insulation was installed.</p>' },
+                { src: 'Gallery/progression5.jpg', thumb: 'Gallery/progression5.jpg', subHtml: '<h4>Putting it all back together</h4><p>We moved in and still had a lot to do.</p>' },
+                { src: 'Gallery/progression6.jpg', thumb: 'Gallery/progression6.jpg', subHtml: '<h4>All done!</h4><p>Took 2 years, but we finally finished.</p>' },
+                { src: 'Gallery/before1.PNG', thumb: 'Gallery/before1.PNG', subHtml: '<h4>Before: Living Room</h4>' },
+                { src: 'Gallery/after1.jpg', thumb: 'Gallery/after1.jpg', subHtml: '<h4>After: Living Room' }, 
+                { src: 'Gallery/before2.PNG', thumb: 'Gallery/before2.PNG', subHtml: '<h4>Before: Bathroom' },
+                { src: 'Gallery/after2.jpg', thumb: 'Gallery/after2.jpg', subHtml: '<h4>After: Bathroom' },
+                { src: 'Gallery/before3.PNG', thumb: 'Gallery/before3.PNG', subHtml: '<h4>Before: Bedroom' },
+                { src: 'Gallery/after3.jpg', thumb: 'Gallery/after3.jpg', subHtml: '<h4>After: Bedroom' }
             ],
             plugins: [lgZoom, lgThumbnail, lgFullscreen],
         });
         
-        inlineGallery.openGallery();
+        renovationGallery.openGallery();
     }
 
     // Initialize Window View Carousel
@@ -494,4 +573,6 @@ document.addEventListener('keydown', function(e) {
             contact.scrollIntoView({ behavior: 'smooth' });
         }
     }
-}); 
+});
+
+ 
