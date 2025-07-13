@@ -544,16 +544,19 @@ if ('IntersectionObserver' in window) {
     lazyLoadImages();
 }
 
+
+document.title = 'Beautiful Narrowboat for Sale - London';
+
 // Add page visibility change handling
-document.addEventListener('visibilitychange', function() {
-    if (document.hidden) {
-        // Page is hidden
-        document.title = 'Come back! - Narrowboat for Sale';
-    } else {
-        // Page is visible
-        document.title = 'Beautiful Narrowboat for Sale - London';
-    }
-});
+// document.addEventListener('visibilitychange', function() {
+//     if (document.hidden) {
+//         // Page is hidden
+//         document.title = 'Come back! - Narrowboat for Sale';
+//     } else {
+//         // Page is visible
+//         document.title = 'Beautiful Narrowboat for Sale - London';
+//     }
+// });
 
 // Enhanced keyboard navigation
 document.addEventListener('keydown', function(e) {
