@@ -158,7 +158,7 @@
                     <a href="smart-systems.html" class="link-arrow">Explore smart features &rarr;</a>
                 </div>
                 <div class="feature-image">
-                    <img src="Gallery/livegrid_portrait.jpg" alt="Smart system display showing live data">
+                    <img src="Gallery/livegrid.gif" alt="Smart system display showing live data">
                 </div>
             </div>
         </div>
@@ -175,7 +175,56 @@
                     <a href="gallery.html" class="link-arrow">See more construction photos &rarr;</a>
                 </div>
                 <div class="feature-image">
-                    <div id="renovation-gallery-container" class="inline-gallery-container"></div>
+                    <div class="renovation-carousel-container">
+                        <div class="renovation-slide active" style="background-image: url('Gallery/progression1.jpg')">
+                            <div class="slide-overlay">
+                                <h4>How it started</h4>
+                                <p>Looked ok but there was no insulation</p>
+                            </div>
+                        </div>
+                        <div class="renovation-slide" style="background-image: url('Gallery/progression2.jpg')">
+                            <div class="slide-overlay">
+                                <h4>Demolition</h4>
+                                <p>Removing old walls, floor, everything basically</p>
+                            </div>
+                        </div>
+                        <div class="renovation-slide" style="background-image: url('Gallery/progression3.jpg')">
+                            <div class="slide-overlay">
+                                <h4>Sanding and Cleaning</h4>
+                                <p>So much rust was sanded off</p>
+                            </div>
+                        </div>
+                        <div class="renovation-slide" style="background-image: url('Gallery/progression4.jpg')">
+                            <div class="slide-overlay">
+                                <h4>Spray Foam</h4>
+                                <p>Professional spray foam insulation was installed</p>
+                            </div>
+                        </div>
+                        <div class="renovation-slide" style="background-image: url('Gallery/progression5.jpg')">
+                            <div class="slide-overlay">
+                                <h4>Putting it all back together</h4>
+                                <p>We moved in and still had a lot to do</p>
+                            </div>
+                        </div>
+                        <div class="renovation-slide" style="background-image: url('Gallery/progression6.jpg')">
+                            <div class="slide-overlay">
+                                <h4>All done!</h4>
+                                <p>Took 2 years, but we finally finished</p>
+                            </div>
+                        </div>
+                        
+                        <button class="carousel-nav-btn prev" onclick="changeRenovationSlide(-1)">❮</button>
+                        <button class="carousel-nav-btn next" onclick="changeRenovationSlide(1)">❯</button>
+                        
+                        <div class="carousel-indicators">
+                            <span class="carousel-indicator active" onclick="currentRenovationSlide(1)"></span>
+                            <span class="carousel-indicator" onclick="currentRenovationSlide(2)"></span>
+                            <span class="carousel-indicator" onclick="currentRenovationSlide(3)"></span>
+                            <span class="carousel-indicator" onclick="currentRenovationSlide(4)"></span>
+                            <span class="carousel-indicator" onclick="currentRenovationSlide(5)"></span>
+                            <span class="carousel-indicator" onclick="currentRenovationSlide(6)"></span>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -186,7 +235,62 @@
         <div class="container">
             <h2>Ever-Changing Views</h2>
             <p class="section-subtitle">The scenery is always changing. We recently cruised from London to Birmingham and back - it was an absolutely amazing experience. The journey took us through beautiful countryside, historic locks, and charming canal-side villages. Every day brought new vistas and peaceful moments watching the world go by from our floating home.</p>
-            <div id="window-gallery-container" class="inline-gallery-container"></div>
+            <div class="window-carousel-container">
+                <div class="window-slide active" style="background-image: url('Gallery/window/1.jpg')"></div>
+                <div class="window-slide" style="background-image: url('Gallery/window/2.jpg')"></div>
+                <div class="window-slide" style="background-image: url('Gallery/window/3.jpg')"></div>
+                <div class="window-slide" style="background-image: url('Gallery/window/4.jpg')"></div>
+                <div class="window-slide" style="background-image: url('Gallery/window/5.jpg')"></div>
+                <div class="window-slide" style="background-image: url('Gallery/window/6.jpg')"></div>
+                <div class="window-slide" style="background-image: url('Gallery/window/7.jpg')"></div>
+                <div class="window-slide" style="background-image: url('Gallery/window/8.jpg')"></div>
+                <div class="window-slide" style="background-image: url('Gallery/window/9.jpg')"></div>
+                <div class="window-slide" style="background-image: url('Gallery/window/10.jpg')"></div>
+                <div class="window-slide" style="background-image: url('Gallery/window/11.jpg')"></div>
+                <div class="window-slide" style="background-image: url('Gallery/window/12.jpg')"></div>
+                <div class="window-slide" style="background-image: url('Gallery/window/13.jpg')"></div>
+                <div class="window-slide" style="background-image: url('Gallery/window/14.jpg')"></div>
+                <div class="window-slide" style="background-image: url('Gallery/window/15.jpg')"></div>
+                <div class="window-slide" style="background-image: url('Gallery/window/16.jpg')"></div>
+                <div class="window-slide" style="background-image: url('Gallery/window/17.jpg')"></div>
+                <div class="window-slide" style="background-image: url('Gallery/window/18.jpg')"></div>
+                <div class="window-slide" style="background-image: url('Gallery/window/19.jpg')"></div>
+                <div class="window-slide" style="background-image: url('Gallery/window/20.jpg')"></div>
+                <div class="window-slide" style="background-image: url('Gallery/window/21.jpg')"></div>
+                <div class="window-slide" style="background-image: url('Gallery/window/22.jpg')"></div>
+                <div class="window-slide" style="background-image: url('Gallery/window/23.jpg')"></div>
+                <div class="window-slide" style="background-image: url('Gallery/window/24.jpg')"></div>
+                
+                <button class="carousel-nav-btn prev" onclick="changeWindowSlide(-1)">❮</button>
+                <button class="carousel-nav-btn next" onclick="changeWindowSlide(1)">❯</button>
+                
+                <div class="carousel-indicators">
+                    <span class="carousel-indicator active" onclick="currentWindowSlide(1)"></span>
+                    <span class="carousel-indicator" onclick="currentWindowSlide(2)"></span>
+                    <span class="carousel-indicator" onclick="currentWindowSlide(3)"></span>
+                    <span class="carousel-indicator" onclick="currentWindowSlide(4)"></span>
+                    <span class="carousel-indicator" onclick="currentWindowSlide(5)"></span>
+                    <span class="carousel-indicator" onclick="currentWindowSlide(6)"></span>
+                    <span class="carousel-indicator" onclick="currentWindowSlide(7)"></span>
+                    <span class="carousel-indicator" onclick="currentWindowSlide(8)"></span>
+                    <span class="carousel-indicator" onclick="currentWindowSlide(9)"></span>
+                    <span class="carousel-indicator" onclick="currentWindowSlide(10)"></span>
+                    <span class="carousel-indicator" onclick="currentWindowSlide(11)"></span>
+                    <span class="carousel-indicator" onclick="currentWindowSlide(12)"></span>
+                    <span class="carousel-indicator" onclick="currentWindowSlide(13)"></span>
+                    <span class="carousel-indicator" onclick="currentWindowSlide(14)"></span>
+                    <span class="carousel-indicator" onclick="currentWindowSlide(15)"></span>
+                    <span class="carousel-indicator" onclick="currentWindowSlide(16)"></span>
+                    <span class="carousel-indicator" onclick="currentWindowSlide(17)"></span>
+                    <span class="carousel-indicator" onclick="currentWindowSlide(18)"></span>
+                    <span class="carousel-indicator" onclick="currentWindowSlide(19)"></span>
+                    <span class="carousel-indicator" onclick="currentWindowSlide(20)"></span>
+                    <span class="carousel-indicator" onclick="currentWindowSlide(21)"></span>
+                    <span class="carousel-indicator" onclick="currentWindowSlide(22)"></span>
+                    <span class="carousel-indicator" onclick="currentWindowSlide(23)"></span>
+                    <span class="carousel-indicator" onclick="currentWindowSlide(24)"></span>
+                </div>
+            </div>
         </div>
     </section>
     

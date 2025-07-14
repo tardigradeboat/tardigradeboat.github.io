@@ -571,6 +571,131 @@ h1, h2, h3 {
     transform: scale(1.2);
 }
 
+/* Renovation and Window Carousel Styles */
+.renovation-carousel-container {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 3/4; /* Portrait ratio for renovation images */
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+.window-carousel-container {
+    position: relative;
+    width: 100%;
+    max-width: 700px; /* Limit width to prevent overwhelming display */
+    margin: 0 auto; /* Center the carousel */
+    aspect-ratio: 4/3; /* 4000x3000 ratio */
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+.renovation-slide,
+.window-slide {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    opacity: 0;
+    transition: opacity 0.8s ease-in-out;
+}
+
+.renovation-slide.active,
+.window-slide.active {
+    opacity: 1;
+}
+
+.renovation-slide .slide-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: linear-gradient(transparent, rgba(0, 0, 0, 0.8));
+    color: white;
+    padding: 2rem;
+    text-align: left;
+}
+
+.renovation-slide .slide-overlay h4 {
+    font-family: var(--heading-font);
+    font-size: 1.5rem;
+    margin: 0 0 0.5rem 0;
+    color: white;
+}
+
+.renovation-slide .slide-overlay p {
+    margin: 0;
+    opacity: 0.9;
+    font-size: 1rem;
+    line-height: 1.4;
+}
+
+.carousel-nav-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(255, 255, 255, 0.9);
+    border: none;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    font-size: 1.2rem;
+    color: var(--dark);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    z-index: 10;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+}
+
+.carousel-nav-btn:hover {
+    background: white;
+    transform: translateY(-50%) scale(1.1);
+}
+
+.carousel-nav-btn.prev {
+    left: 20px;
+}
+
+.carousel-nav-btn.next {
+    right: 20px;
+}
+
+.carousel-indicators {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 8px;
+    z-index: 10;
+    flex-wrap: wrap;
+    justify-content: center;
+    max-width: 80%;
+}
+
+.carousel-indicator {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.5);
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.carousel-indicator.active {
+    background: white;
+    transform: scale(1.2);
+}
+
 .inline-gallery-container .lg-item {
     border-radius: var(--border-radius);
 }
@@ -994,6 +1119,17 @@ h1, h2, h3 {
     .pricing-card-redesigned, .contact-card-redesigned {
         padding: 30px;
     }
+
+    .renovation-carousel-container {
+        aspect-ratio: 3/4;
+        height: 500px; /* Fallback for older browsers - taller for portrait */
+    }
+
+    .window-carousel-container {
+        max-width: 600px; /* Slightly smaller on tablet */
+        aspect-ratio: 4/3;
+        height: 350px; /* Fallback for older browsers */
+    }
     
     .spec-grid {
         grid-template-columns: 1fr;
@@ -1090,6 +1226,53 @@ h1, h2, h3 {
     
     #window-gallery-container {
         aspect-ratio: 16/10;
+    }
+
+    .renovation-carousel-container {
+        aspect-ratio: 3/4;
+        height: 400px; /* Fallback for older browsers - taller for portrait */
+    }
+
+    .window-carousel-container {
+        max-width: 500px; /* Compact size on mobile */
+        aspect-ratio: 4/3;
+        height: 280px; /* Fallback for older browsers */
+    }
+
+    .renovation-slide .slide-overlay {
+        padding: 1rem;
+    }
+
+    .renovation-slide .slide-overlay h4 {
+        font-size: 1.2rem;
+    }
+
+    .renovation-slide .slide-overlay p {
+        font-size: 0.9rem;
+    }
+
+    .carousel-nav-btn {
+        width: 40px;
+        height: 40px;
+        font-size: 1rem;
+    }
+
+    .carousel-nav-btn.prev {
+        left: 10px;
+    }
+
+    .carousel-nav-btn.next {
+        right: 10px;
+    }
+
+    .carousel-indicators {
+        bottom: 15px;
+        max-width: 90%;
+    }
+
+    .carousel-indicator {
+        width: 10px;
+        height: 10px;
     }
     
     .gallery-item {

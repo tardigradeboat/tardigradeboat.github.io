@@ -184,83 +184,140 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    // Initialize Renovation Gallery
-    const renovationContainer = document.getElementById('renovation-gallery-container');
-    if (renovationContainer) {
-        const renovationGallery = lightGallery(renovationContainer, {
-            container: renovationContainer,
-            dynamic: true,
-            hash: false,
-            closable: false,
-            showMaximizeIcon: true,
-            appendSubHtmlTo: '.lg-item',
-            slideDelay: 400,
-            dynamicEl: [
-                // { src: 'Gallery/construction1.jpg', thumb: 'Gallery/construction1.jpg', subHtml: '<h4>Construction: Framework</h4><p>The internal structure starts to take shape with wooden framing.</p>' },
-                // { src: 'Gallery/construction2.jpg', thumb: 'Gallery/construction2.jpg', subHtml: '<h4>Construction: Insulation</h4><p>Spray foam insulation provides excellent thermal properties.</p>' },
-                // { src: 'Gallery/construction3.jpg', thumb: 'Gallery/construction3.jpg', subHtml: '<h4>Construction: Wiring</h4><p>Electrical wiring is run throughout the boat.</p>' },
-                // { src: 'Gallery/construction4.jpg', thumb: 'Gallery/construction4.jpg', subHtml: '<h4>Construction: Cladding</h4><p>Beautiful wood cladding is installed.</p>' },
-                // { src: 'Gallery/construction5.jpg', thumb: 'Gallery/construction5.jpg', subHtml: '<h4>Construction: Kitchen</h4><p>Custom cabinetry and kitchen units are built and fitted.</p>' },
-                { src: 'Gallery/progression1.jpg', thumb: 'Gallery/progression1.jpg', subHtml: '<h4>How it started</h4><p>Looked ok but there was no insulation.</p>' },
-                { src: 'Gallery/progression2.jpg', thumb: 'Gallery/progression2.jpg', subHtml: '<h4>Demolition</h4><p>Removing old walls, floor, everything basically.</p>' },
-                { src: 'Gallery/progression3.jpg', thumb: 'Gallery/progression3.jpg', subHtml: '<h4>Sanding and Cleaning</h4><p>So much rust was sanded off.</p>' },
-                { src: 'Gallery/progression4.jpg', thumb: 'Gallery/progression4.jpg', subHtml: '<h4>Spray Foam</h4><p>Professional spray foam insulation was installed.</p>' },
-                { src: 'Gallery/progression5.jpg', thumb: 'Gallery/progression5.jpg', subHtml: '<h4>Putting it all back together</h4><p>We moved in and still had a lot to do.</p>' },
-                { src: 'Gallery/progression6.jpg', thumb: 'Gallery/progression6.jpg', subHtml: '<h4>All done!</h4><p>Took 2 years, but we finally finished.</p>' },
-                { src: 'Gallery/before1.jpg', thumb: 'Gallery/before1.jpg', subHtml: '<h4>Before: Living Room</h4>' },
-                { src: 'Gallery/after1.jpg', thumb: 'Gallery/after1.jpg', subHtml: '<h4>After: Living Room' }, 
-                { src: 'Gallery/before2.jpg', thumb: 'Gallery/before2.jpg', subHtml: '<h4>Before: Bathroom' },
-                { src: 'Gallery/after2.jpg', thumb: 'Gallery/after2.jpg', subHtml: '<h4>After: Bathroom' },
-                { src: 'Gallery/before3.jpg', thumb: 'Gallery/before3.jpg', subHtml: '<h4>Before: Bedroom' },
-                { src: 'Gallery/after3.jpg', thumb: 'Gallery/after3.jpg', subHtml: '<h4>After: Bedroom' }
-            ],
-            plugins: [lgZoom, lgThumbnail, lgFullscreen],
-        });
+    // Renovation Carousel
+    let renovationSlideIndex = 1;
+    let renovationTimer;
+    
+    function showRenovationSlide(n) {
+        const slides = document.querySelectorAll('.renovation-slide');
+        const indicators = document.querySelectorAll('.renovation-carousel-container .carousel-indicator');
         
-        renovationGallery.openGallery();
+        if (!slides.length) return;
+        
+        if (n > slides.length) { renovationSlideIndex = 1; }
+        if (n < 1) { renovationSlideIndex = slides.length; }
+        
+        slides.forEach(slide => slide.classList.remove('active'));
+        indicators.forEach(indicator => indicator.classList.remove('active'));
+        
+        if (slides[renovationSlideIndex - 1]) {
+            slides[renovationSlideIndex - 1].classList.add('active');
+        }
+        if (indicators[renovationSlideIndex - 1]) {
+            indicators[renovationSlideIndex - 1].classList.add('active');
+        }
+    }
+    
+    function resetRenovationTimer() {
+        clearInterval(renovationTimer);
+        renovationTimer = setInterval(() => {
+            renovationSlideIndex++;
+            showRenovationSlide(renovationSlideIndex);
+        }, 4000);
+    }
+    
+    window.changeRenovationSlide = function(n) {
+        showRenovationSlide(renovationSlideIndex += n);
+        resetRenovationTimer();
+    }
+    
+    window.currentRenovationSlide = function(n) {
+        showRenovationSlide(renovationSlideIndex = n);
+        resetRenovationTimer();
+    }
+    
+    // Initialize renovation carousel if container exists
+    if (document.querySelector('.renovation-carousel-container')) {
+        resetRenovationTimer();
     }
 
-    // Initialize Window View Carousel
-    const windowContainer = document.getElementById('window-gallery-container');
-    if (windowContainer) {
-        const windowGallery = lightGallery(windowContainer, {
-            container: windowContainer,
-            dynamic: true,
-            hash: false,
-            closable: false,
-            showMaximizeIcon: true,
-            appendSubHtmlTo: '.lg-item',
-            slideDelay: 400,
-            dynamicEl: [
-                { src: 'Gallery/window/1.jpg', thumb: 'Gallery/window/1.jpg' },
-                { src: 'Gallery/window/2.jpg', thumb: 'Gallery/window/2.jpg' },
-                { src: 'Gallery/window/3.jpg', thumb: 'Gallery/window/3.jpg' },
-                { src: 'Gallery/window/4.jpg', thumb: 'Gallery/window/4.jpg' },
-                { src: 'Gallery/window/5.jpg', thumb: 'Gallery/window/5.jpg' },
-                { src: 'Gallery/window/6.jpg', thumb: 'Gallery/window/6.jpg' },
-                { src: 'Gallery/window/7.jpg', thumb: 'Gallery/window/7.jpg' },
-                { src: 'Gallery/window/8.jpg', thumb: 'Gallery/window/8.jpg' },
-                { src: 'Gallery/window/9.jpg', thumb: 'Gallery/window/9.jpg' },
-                { src: 'Gallery/window/10.jpg', thumb: 'Gallery/window/10.jpg' },
-                { src: 'Gallery/window/11.jpg', thumb: 'Gallery/window/11.jpg' },
-                { src: 'Gallery/window/12.jpg', thumb: 'Gallery/window/12.jpg' },
-                { src: 'Gallery/window/13.jpg', thumb: 'Gallery/window/13.jpg' },
-                { src: 'Gallery/window/14.jpg', thumb: 'Gallery/window/14.jpg' },
-                { src: 'Gallery/window/15.jpg', thumb: 'Gallery/window/15.jpg' },
-                { src: 'Gallery/window/16.jpg', thumb: 'Gallery/window/16.jpg' },
-                { src: 'Gallery/window/17.jpg', thumb: 'Gallery/window/17.jpg' },
-                { src: 'Gallery/window/18.jpg', thumb: 'Gallery/window/18.jpg' },
-                { src: 'Gallery/window/19.jpg', thumb: 'Gallery/window/19.jpg' },
-                { src: 'Gallery/window/20.jpg', thumb: 'Gallery/window/20.jpg' },
-                { src: 'Gallery/window/21.jpg', thumb: 'Gallery/window/21.jpg' },
-                { src: 'Gallery/window/22.jpg', thumb: 'Gallery/window/22.jpg' },
-                { src: 'Gallery/window/23.jpg', thumb: 'Gallery/window/23.jpg' },
-                { src: 'Gallery/window/24.jpg', thumb: 'Gallery/window/24.jpg' }
-            ],
-            plugins: [lgZoom, lgThumbnail, lgFullscreen],
+    // Window View Carousel
+    let windowSlideIndex = 1;
+    let windowTimer;
+    
+    function showWindowSlide(n) {
+        const slides = document.querySelectorAll('.window-slide');
+        const indicators = document.querySelectorAll('.window-carousel-container .carousel-indicator');
+        
+        if (!slides.length) return;
+        
+        if (n > slides.length) { windowSlideIndex = 1; }
+        if (n < 1) { windowSlideIndex = slides.length; }
+        
+        slides.forEach(slide => slide.classList.remove('active'));
+        indicators.forEach(indicator => indicator.classList.remove('active'));
+        
+        if (slides[windowSlideIndex - 1]) {
+            slides[windowSlideIndex - 1].classList.add('active');
+        }
+        if (indicators[windowSlideIndex - 1]) {
+            indicators[windowSlideIndex - 1].classList.add('active');
+        }
+    }
+    
+    function resetWindowTimer() {
+        clearInterval(windowTimer);
+        windowTimer = setInterval(() => {
+            windowSlideIndex++;
+            showWindowSlide(windowSlideIndex);
+        }, 3500);
+    }
+    
+    window.changeWindowSlide = function(n) {
+        showWindowSlide(windowSlideIndex += n);
+        resetWindowTimer();
+    }
+    
+    window.currentWindowSlide = function(n) {
+        showWindowSlide(windowSlideIndex = n);
+        resetWindowTimer();
+    }
+    
+    // Initialize window carousel if container exists
+    if (document.querySelector('.window-carousel-container')) {
+        resetWindowTimer();
+    }
+
+    // Touch support for renovation carousel
+    const renovationCarousel = document.querySelector('.renovation-carousel-container');
+    if (renovationCarousel) {
+        let touchStartX = 0;
+        let touchEndX = 0;
+        
+        renovationCarousel.addEventListener('touchstart', function(e) {
+            touchStartX = e.changedTouches[0].screenX;
         });
         
-        windowGallery.openGallery();
+        renovationCarousel.addEventListener('touchend', function(e) {
+            touchEndX = e.changedTouches[0].screenX;
+            if (touchEndX < touchStartX - 50) {
+                changeRenovationSlide(1); // Swipe left - next slide
+            }
+            if (touchEndX > touchStartX + 50) {
+                changeRenovationSlide(-1); // Swipe right - previous slide
+            }
+        });
+    }
+
+    // Touch support for window carousel
+    const windowCarousel = document.querySelector('.window-carousel-container');
+    if (windowCarousel) {
+        let touchStartX = 0;
+        let touchEndX = 0;
+        
+        windowCarousel.addEventListener('touchstart', function(e) {
+            touchStartX = e.changedTouches[0].screenX;
+        });
+        
+        windowCarousel.addEventListener('touchend', function(e) {
+            touchEndX = e.changedTouches[0].screenX;
+            if (touchEndX < touchStartX - 50) {
+                changeWindowSlide(1); // Swipe left - next slide
+            }
+            if (touchEndX > touchStartX + 50) {
+                changeWindowSlide(-1); // Swipe right - previous slide
+            }
+        });
     }
 
     // Smooth scrolling for navigation links
