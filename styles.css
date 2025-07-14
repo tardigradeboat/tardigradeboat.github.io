@@ -266,10 +266,7 @@ h1, h2, h3 {
     padding: 4rem 0;
 }
 
-.tech-specs h2 {
-    color: #fff;
-    text-align: left;
-}
+/* Removed tech-specs h2 override to use consistent global styling */
 
 .spec-grid-home {
     display: grid;
@@ -623,7 +620,7 @@ h1, h2, h3 {
 }
 
 .renovation-slide .slide-overlay h4 {
-    font-family: var(--heading-font);
+    font-family: var(--font-heading);
     font-size: 1.5rem;
     margin: 0 0 0.5rem 0;
     color: white;
@@ -1747,14 +1744,7 @@ html {
 /*------------------------------------*\
   #SPECIFICATIONS PAGE
 \*------------------------------------*/
-.tech-specs .page-title {
-    text-align: center;
-    margin-bottom: 1rem;
-    font-family: 'Onest', sans-serif;
-    font-size: 3rem;
-    font-weight: 600;
-    color: #1a1a1a;
-}
+/* Removed tech-specs page-title override to use consistent global styling */
 
 .tech-specs .section-subtitle {
     text-align: center;
@@ -1908,9 +1898,7 @@ html {
         font-size: 2rem;
     }
     
-    .tech-specs .page-title {
-        font-size: 2.5rem;
-    }
+    /* Removed tech-specs page-title override to use consistent global styling */
 }
 
 @media (max-width: 768px) {
@@ -1926,9 +1914,7 @@ html {
         font-size: 1.8rem;
     }
     
-    .tech-specs .page-title {
-        font-size: 2rem;
-    }
+    /* Removed tech-specs page-title override to use consistent global styling */
     
     .feature-image-full {
         max-width: 100%;
