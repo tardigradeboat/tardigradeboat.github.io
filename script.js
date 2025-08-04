@@ -16,46 +16,26 @@ document.addEventListener('DOMContentLoaded', function() {
     const mainGallery = document.getElementById('main-gallery');
     if (mainGallery) {
         lightGallery(mainGallery, {
-            plugins: [lgZoom, lgThumbnail, lgFullscreen, lgShare],
+            plugins: [lgZoom, lgThumbnail, lgFullscreen],
             speed: 500,
-            thumbnail: true,
-            animateThumb: true,
-            zoomFromOrigin: false,
-            allowMediaOverlap: true,
-            toggleThumb: true,
-            thumbnailPluginStrings: {
-                toggleThumbnails: 'Toggle thumbnails'
-            },
-            share: true,
-            sharePluginStrings: {
-                share: 'Share'
-            },
+            thumbnail: false, // Disable thumbnails to fix stacking issue
             zoom: true,
-            scale: 1,
             enableDrag: true,
             enableSwipe: true,
             closable: true,
             escKey: true,
             keyPress: true,
             controls: true,
-            slideEndAnimation: true,
-            hideControlOnEnd: false,
             mousewheel: true,
             getCaptionFromTitleOrAlt: true,
-            appendSubHtmlTo: '.lg-sub-html',
-            subHtmlSelectorRelative: false,
             preload: 2,
             showZoomInOutIcons: true,
             actualSize: true,
-            enableDrag: true,
-            enableSwipe: true,
             swipeThreshold: 50,
             enableTouch: true,
             touchSwipeThreshold: 50,
-            pullCaptionDelay: 0,
             enableInfiniteScroll: true,
             progressBar: true,
-            appendCounterTo: '.lg-toolbar',
             counter: true,
             addClass: 'lg-boat-gallery'
         });
@@ -65,40 +45,26 @@ document.addEventListener('DOMContentLoaded', function() {
     const constructionGallery = document.getElementById('construction-gallery');
     if (constructionGallery) {
         lightGallery(constructionGallery, {
-            plugins: [lgZoom, lgThumbnail, lgFullscreen, lgShare],
+            plugins: [lgZoom, lgThumbnail, lgFullscreen],
             speed: 500,
-            thumbnail: true,
-            animateThumb: true,
-            zoomFromOrigin: false,
-            allowMediaOverlap: true,
-            toggleThumb: true,
-            share: true,
+            thumbnail: false, // Disable thumbnails to fix stacking issue
             zoom: true,
-            scale: 1,
             enableDrag: true,
             enableSwipe: true,
             closable: true,
             escKey: true,
             keyPress: true,
             controls: true,
-            slideEndAnimation: true,
-            hideControlOnEnd: false,
             mousewheel: true,
             getCaptionFromTitleOrAlt: true,
-            appendSubHtmlTo: '.lg-sub-html',
-            subHtmlSelectorRelative: false,
             preload: 2,
             showZoomInOutIcons: true,
             actualSize: true,
-            enableDrag: true,
-            enableSwipe: true,
             swipeThreshold: 50,
             enableTouch: true,
             touchSwipeThreshold: 50,
-            pullCaptionDelay: 0,
             enableInfiniteScroll: true,
             progressBar: true,
-            appendCounterTo: '.lg-toolbar',
             counter: true,
             addClass: 'lg-construction-gallery'
         });

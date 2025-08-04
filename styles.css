@@ -1450,6 +1450,25 @@ html {
     padding: 20px;
 }
 
+/* Mobile specific fixes */
+@media (max-width: 768px) {
+    .lg-actions .lg-next, .lg-actions .lg-prev {
+        width: 44px;
+        height: 44px;
+        font-size: 18px;
+        background: rgba(0, 0, 0, 0.6);
+        border-radius: 50%;
+    }
+    
+    .lg-actions .lg-prev {
+        left: 10px;
+    }
+    
+    .lg-actions .lg-next {
+        right: 10px;
+    }
+}
+
 /* Additional visual enhancements */
 .hero-image::after {
     content: '';
@@ -1884,10 +1903,7 @@ html {
     box-shadow: 0 12px 48px rgba(0,0,0,0.1);
 }
 
-/* Remove old spec grid styles */
-.spec-grid, .specs-content {
-    /* This is now handled by feature-row */
-}
+/* Remove old spec grid styles - handled by feature-row */
 
 @media (max-width: 992px) {
     .feature-row {
