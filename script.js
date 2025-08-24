@@ -9,12 +9,13 @@ document.addEventListener('DOMContentLoaded', function() {
             } else {
                 header.classList.remove('scrolled');
             }
-        });
+        }, { passive: true });
     }
 
     // Initialize lightGallery for main gallery
     const mainGallery = document.getElementById('main-gallery');
     if (mainGallery) {
+        const isMobileViewport = window.matchMedia && window.matchMedia('(max-width: 850px)').matches;
         lightGallery(mainGallery, {
             plugins: [lgZoom, lgThumbnail, lgFullscreen],
             speed: 500,
@@ -28,7 +29,7 @@ document.addEventListener('DOMContentLoaded', function() {
             controls: true,
             mousewheel: true,
             getCaptionFromTitleOrAlt: true,
-            preload: 2,
+            preload: isMobileViewport ? 1 : 2,
             showZoomInOutIcons: true,
             actualSize: true,
             swipeThreshold: 50,
@@ -70,16 +71,38 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    // Initialize Masonry
+    // Initialize Masonry (progressive layout so scrolling isn't blocked)
     const grid = document.querySelector('.gallery-grid');
     if (grid) {
-        imagesLoaded(grid, function() {
-            new Masonry(grid, {
-                itemSelector: '.gallery-item',
-                columnWidth: '.gallery-item',
-                percentPosition: true
-            });
+        const msnry = new Masonry(grid, {
+            itemSelector: '.gallery-item',
+            columnWidth: '.gallery-item',
+            percentPosition: true
         });
+        // Expose for lazy-loaded image relayouts
+        window.__msnry = msnry;
+        imagesLoaded(grid).on('progress', function() {
+            msnry.layout();
+        });
+    }
+
+    // Optimize gallery image loading (mobile-first lazy deferral)
+    const galleryImgs = document.querySelectorAll('#main-gallery .gallery-item img');
+    if (galleryImgs.length) {
+        const isMobile = window.matchMedia && window.matchMedia('(max-width: 850px)').matches;
+        galleryImgs.forEach((img, index) => {
+            img.setAttribute('decoding', 'async');
+            img.setAttribute('loading', 'lazy');
+            // On mobile, defer offscreen images by swapping to data-src
+            if (isMobile && index >= 6 && !img.dataset.src) {
+                img.dataset.src = img.src;
+                img.src = 'data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="10" height="7"></svg>';
+                img.classList.add('lazy');
+            }
+        });
+        if ('IntersectionObserver' in window) {
+            lazyLoadImages();
+        }
     }
 
     // Initialize Hero Carousel
@@ -374,7 +397,7 @@ document.addEventListener('DOMContentLoaded', function() {
             const rate = scrolled * -0.2;
             hero.style.backgroundPosition = `center ${rate}px`;
         }
-    });
+    }, { passive: true });
 
     // Feature tags hover effect
     const featureTags = document.querySelectorAll('.feature-tag');
@@ -554,6 +577,11 @@ function lazyLoadImages() {
                 const img = entry.target;
                 img.src = img.dataset.src;
                 img.classList.remove('lazy');
+                if (window.__msnry) {
+                    img.addEventListener('load', function() {
+                        window.__msnry.layout();
+                    }, { once: true });
+                }
                 imageObserver.unobserve(img);
             }
         });
